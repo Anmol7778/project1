@@ -42,15 +42,22 @@ body{
 
 /* Header */
 .header{
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 10;
+  left: 0;
+  width: 100%;
+
+  z-index: 1000;
+
   display:flex;
   justify-content: space-between;
   align-items:center;
+
   padding: 14px 18px;
-  background: rgba(7,10,22,.70);
-  backdrop-filter: blur(10px);
+
+  background: rgba(7,10,22,.90);
+  backdrop-filter: blur(12px);
+
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
@@ -112,11 +119,12 @@ body{
 .main{
   position: relative;
   z-index: 1;
+  margin-top: 90px;   /* space for fixed header */
   max-width: 1120px;
-  margin: 0 auto;
+  margin-left:auto;
+  margin-right:auto;
   padding: 18px;
 }
-
 /* Hero */
 .hero{
   display:grid;
@@ -460,41 +468,7 @@ body{
 }
 
 /* Mobile */
-@media (max-width: 768px) {
 
-  .header {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .hero__title {
-    font-size: 30px;
-  }
-
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .platforms {
-    grid-template-columns: 1fr;
-  }
-
-  .slides img {
-    height: 280px;
-  }
-
-}
 
 /* Small Mobile */
 @media (max-width: 480px) {
@@ -601,5 +575,72 @@ body{
   .slides img {
     height: 300px;
   }
+}
+/* ===== HAMBURGER MENU ===== */
 
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+}
+
+/* hamburger button */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+  gap:5px;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:3px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 768px){
+
+  /* show hamburger */
+  .hamburger{
+    display:flex;
+  }
+
+  /* hide normal nav */
+  .nav{
+    position:absolute;
+    top:72px;
+    left:0;
+    width:100%;
+
+    background:rgba(7,10,22,.95);
+    backdrop-filter:blur(10px);
+
+    flex-direction:column;
+    align-items:center;
+
+    gap:18px;
+    padding:20px 0;
+
+    display:none;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+
+  /* show menu when active */
+  .nav.active{
+    display:flex;
+  }
+
+  .nav__link{
+    font-size:16px;
+  }
+.hamburger span{
+  transition:0.3s;
+}
+.header{
+  transition: all .3s ease;
+}
 }
