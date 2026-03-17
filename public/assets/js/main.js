@@ -127,3 +127,17 @@ document.querySelector(".prev").addEventListener("click", () => {
     (currentIndex - 1 + totalImages) % totalImages;
   updateSlider();
 });
+
+// Hamburger Menu Toggle
+
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+document.querySelectorAll(".nav__link").forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+  });
+});
