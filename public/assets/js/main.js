@@ -40,6 +40,9 @@ const platforms = [
   { name: "GAME ROOM", icon: "assets/img/platforms/game-room.jpg", url: "https://www.gameroom777.com" },
   { name: "MEDUSA", icon: "assets/img/platforms/medusa.jpg", url: "https://medusa777.com" },
   { name: "PANDA POWER", icon: "assets/img/platforms/panda-power.png", url: "https://dev.pandapower777.com/login" },
+  { name: "SPINCITY", icon: "assets/img/platforms/spincity.jpg", url: "https://play.spincity777.vip/" },
+  { name: "FUNSTATION", icon: "assets/img/platforms/funstation.jpg", url: "https://www.funstation.site/download/" },
+  { name: "MAFIA", icon: "assets/img/platforms/mafia.jpg", url: "https://www.mafia77777.com/m" },
 ];
 
 // ===================================
@@ -129,15 +132,53 @@ document.querySelector(".prev").addEventListener("click", () => {
 });
 
 // Hamburger Menu Toggle
-
+// HAMBURGER MENU
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("navMenu");
 
-hamburger.addEventListener("click", () => {
+if(hamburger && navMenu){
+
+hamburger.addEventListener("click", ()=>{
   navMenu.classList.toggle("active");
 });
-document.querySelectorAll(".nav__link").forEach(link => {
-  link.addEventListener("click", () => {
+
+document.querySelectorAll('.nav__link').forEach(link=>{
+  link.addEventListener("click", ()=>{
     navMenu.classList.remove("active");
   });
 });
+
+}
+
+
+// CONTACT DROPDOWN
+const contactBtn = document.querySelector(".contact-btn");
+const contactMenu = document.querySelector(".contact-menu");
+
+if(contactBtn && contactMenu){
+
+contactBtn.addEventListener("click", function(e){
+  e.preventDefault();
+  e.stopPropagation();
+
+  contactMenu.classList.toggle("show");
+});
+
+document.addEventListener("click", function(e){
+
+ if(
+   !contactBtn.contains(e.target) &&
+   !contactMenu.contains(e.target)
+ ){
+   contactMenu.classList.remove("show");
+ }
+
+});
+
+document.querySelectorAll(".contact-menu a").forEach(link=>{
+ link.addEventListener("click",()=>{
+   contactMenu.classList.remove("show");
+ });
+});
+
+}
